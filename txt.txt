@@ -1,0 +1,3 @@
+1 - Route /admin opened for all of us
+2 - In members search we can inject SQL
+3 - 
