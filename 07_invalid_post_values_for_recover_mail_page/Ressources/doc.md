@@ -1,4 +1,4 @@
-# Exploit 07 - Invalide POST values for recover mail page
+# Exploit 07 - Invalid POST values for recover mail page
 
 Sur la [page de récupération de mot de passe](http://192.168.56.101/index.php?page=recover)
 il y a un `input` caché:
