@@ -1,27 +1,32 @@
 # Exploit 13 - htaccess
 
-The url http://192.168.56.101/robots.txt inform us that there exists
-two _hidden_ urls:
+Tout site voulant être indexé convenablement par les moteurs de recherche doit fournir un fichier `robots.txt` à la
+racine de son site. Il est donc naturel de chercher ce fichier pour trouver des informations cachées.
 
--   /whatever
--   /.hidden
+L'url http://192.168.56.101/robots.txt nous informe de l'existence de deux urls qui ne sont pas indexées:
 
-Under http://192.168.56.101/whatever/htpasswd we can retrieve the admin password:
+- /whatever
+- /.hidden
 
--   root:437394baff5aa33daa618be47b75cb49
+On se rend vite compte que même si ces pages ne sont pas indexées, elles sont accessibles.
 
-It looks like a md5 hash, it's reversible:
+Ainsi sous http://192.168.56.101/whatever/htpasswd on trouve un fichier htpasswd qui contient les informations de
+connexion
 
-with the help of https://md5.gromweb.com/?md5=437394baff5aa33daa618be47b75cb49
-we reverse the hash into _qwerty123@_
+- root:437394baff5aa33daa618be47b75cb49
 
-Those credentials do not work on the sign in page, there must be an admin page:
+Cela ressemble à un hash md5, il est réversible:
+avec l'outil https://md5.gromweb.com/?md5=437394baff5aa33daa618be47b75cb49,
+on peut inverser le hash en _qwerty123@_
 
-Found at http://192.168.56.101/admin
+Ces informations de connexion ne fonctionnent pas sur la page de connexion, il doit y avoir une page d'administration:
+On peut la trouver à l'url http://192.168.56.101/admin.
 
-Finally the flag retrieval can be automated with the command:
+Enfin, la récupération du flag peut être automatisée avec la commande:
 
 ```bash
 curl -s -X POST http://192.168.56.101/admin/ --data "username=root&password=qwerty123@&Login=Login" | grep -oP 'The flag is : \K[0-9a-f]{64}'
-
 ```
+
+Pour contrer cette attaque, il ne faut pas considérer les fichiers cachés comme étant sécurisés. Il est préférable de
+mettre en place une authentification pour accéder à ces fichiers.

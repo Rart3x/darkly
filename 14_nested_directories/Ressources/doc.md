@@ -1,12 +1,12 @@
 # Exploit 14 - nested directories
 
-Under `/.hidden` there is a large file tree with txt files in each directory.
-It looks like admin wanted to hide something inside.
+Sous `/.hidden`, il y a un grand arbre de fichiers avec des fichiers txt dans chaque répertoire.
+On dirait que l'administrateur voulait cacher quelque chose à l'intérieur.
 
-As the filetree is very large, we need a script to automatically crawl its content
-for the flag.
+Comme l'arborescence des fichiers est très grande, nous avons besoin d'un script pour parcourir automatiquement son contenu
+pour le flag.
 
-Here's such a script, that recursively crawl the filetree:
+Voici un tel script, qui parcourt récursivement l'arborescence des fichiers:
 
 ```bash
 crawl()
@@ -31,3 +31,9 @@ crawl "http://192.168.56.101/.hidden/" \
     | head -1 \
     | xargs -I {} echo -e "\n{}"
 ```
+
+Pour contrer cette attaque, deux points sont importants:
+- Il ne faut pas considérer les fichiers cachés comme étant sécurisés. Il est préférable de mettre en place une
+  authentification pour accéder à ces fichiers.
+- Utiliser des arborescences de fichiers artificiellement complexes pour cacher des fichiers sensibles n'est pas une bonne
+  pratique. Il est préférable de mettre en place une authentification pour accéder à ces fichiers.
