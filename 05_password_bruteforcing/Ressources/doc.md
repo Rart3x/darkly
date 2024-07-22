@@ -33,19 +33,20 @@ Hydra est un outil de force brute open source conçu pour tenter de récupérer 
 
 ## Utilisation
 
-Tentez une connexion pour obtenir la page `/WrongAnswer`
+Tentez une connexion pour obtenir l'URL de connexion failed
 
 Pour tester une connexion avec un utilisateur administrateur utilisez la commande suivante :
 
 ```bash
-./hydra -l admin -P ../password.txt -F -o hydra.log 192.168.56.101 http-get-form
+./hydra -l admin -P ./password.txt -F -o hydra.log 192.168.56.102 http-get-form '/index.php:page=signin&username=^USER^&password=^PASS^&Login=Login:F=images/WrongAnswer.gif'
 ```
 
 - `-l admin` spécifie l'utilisateur que nous essayons de pirater.
-- `-P ../password.txt` indique le chemin vers un fichier contenant un dictionnaire de mots de passe.
+- `-P ./password.txt` indique le chemin vers un fichier contenant un dictionnaire de mots de passe.
 - `-F` active le mode de force brute.
 - `-o hydra.log` spécifie le fichier dans lequel stocker les résultats.
-- `192.168.56.101` est l'adresse IP du site cible.
+- `192.168.56.102` est l'adresse IP du site cible.
+- `http-get-form` le type de la requete
 - `/index.php:page=signin&username=^USER^&password=^PASS^&Login=Login:F=images/WrongAnswer.gif` est l'URL avec nos variables `USER` et `PASS` qui seront utilisées pour tester tous les mots de passe du dictionnaire.
 
 Cette commande tente de se connecter en utilisant différents mots de passe du dictionnaire jusqu'à ce qu'elle trouve un mot de passe qui fonctionne, en affichant les résultats dans le fichier `hydra.log`.

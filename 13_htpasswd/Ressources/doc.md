@@ -25,7 +25,7 @@ On peut la trouver à l'url http://192.168.56.101/admin.
 Enfin, la récupération du flag peut être automatisée avec la commande:
 
 ```bash
-curl -s -X POST http://192.168.56.101/admin/ --data "username=root&password=qwerty123@&Login=Login" | grep -oP 'The flag is : \K[0-9a-f]{64}'
+curl -s -X POST http://192.168.56.102/admin/ --data "username=root&password=qwerty123@&Login=Login" | grep -oP 'The flag is : \K[0-9a-f]{64}'
 ```
 
 Pour contrer cette attaque, il ne faut pas considérer les fichiers cachés comme étant sécurisés. Il est préférable de

